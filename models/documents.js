@@ -16,6 +16,20 @@ module.exports = class Documents {
   }
 
   static async fetchDocument(id) {
+    try {
+      const docRef = db.collection('research_blogs').doc(id);
+      const doc = await docRef.get();
 
+      if (!doc.exists) {
+        console.log('No document found with ID:', id);
+        return null;
+      }
+
+      return {id: doc.id, data: doc.data()};
+    } catch (error) {
+      console.error('Error getting document with ID:', id, error);
+      throw error;
+    }
   }
+
 };

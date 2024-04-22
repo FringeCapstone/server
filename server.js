@@ -9,10 +9,11 @@ const express = require('express');
 const app = express();
 
 const journalsRoutes = require("./routes/journalsRoutes");
-
+const documentRoutes = require("./routes/documentRoutes");
 
 app.use(bodyParser.urlencoded({ extended: false })); //middleware
 app.use(journalsRoutes.routes);
+app.use(documentRoutes.routes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
