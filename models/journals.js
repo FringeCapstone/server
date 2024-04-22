@@ -14,21 +14,8 @@ module.exports = class Journals {
       throw error;
     }
   }
-  static async fetchAllDoc() {
-    try {
-      const snapshot = await db.collection('research_blogs').get();
-      if (snapshot.empty) {
-        console.log('No documents found.');
-        return [];
-      }
-      return snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
-    } catch (error) {
-      console.error('Error getting documents', error);
-      throw error;
-    }
-  }
 
-  static async fetchAllJournals(id) {
+  static async fetchJournals(id) {
     try {
       const snapshot = await db.collection('users').doc(id).collection('journal').get();
       if (snapshot.empty) {

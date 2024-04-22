@@ -1,7 +1,7 @@
 const Journals = require('../models/journals');
 
 exports.getJournals = async (req, res) => {
-  Journals.fetchAllJournals(req.params.id)
+  Journals.fetchJournals(req.params.id)
       .then(journals => res.json(journals))
 }
 exports.getDocs = async (req, res) => {
