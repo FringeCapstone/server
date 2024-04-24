@@ -18,3 +18,10 @@ exports.addJournal = async (req, res) => {
   Journals.addJournal(req.params.id, req.body)
       .then(journal => res.json(journal))
 }
+
+exports.deleteJournal = async (req, res) => {
+  Journals.deleteJournal(req.params.id, req.body.journalID)
+      .then(() => res.status(204))
+}
+
+exports

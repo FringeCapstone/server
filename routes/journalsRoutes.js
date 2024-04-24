@@ -3,8 +3,9 @@ const router = express.Router();
 const journalsController = require('../controllers/journalsController');
 
 // router.get('/showJournals', journalsController.getAllJournals);// wont have implemented
-router.get('/showJournals/:id', journalsController.getJournals);
-router.post('/newJournal', journalsController.addJournal);
-
+router.get('/journal/:id', journalsController.getJournals);
+router.post('/journal', journalsController.addJournal);
+router.delete('/journal/:id', journalsController.deleteJournal)
+router.put('/journal/:id', journalsController.updateJournal)
 
 exports.routes = router;

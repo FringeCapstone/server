@@ -41,6 +41,32 @@ module.exports = class Journals {
       throw error;
     }
   }
+
+  static async updateJournal(id, journalID, content) {
+    try {
+      db.collection('users').doc(userId).collection('journals').doc(journalID)
+          .update({
+            content: content
+          })
+          .then(() => {
+            console.log('Journal successfully updated!');
+          })
+    } catch (error) {
+      console.error('Error updating journal: ', error);
+      throw error;
+    }
+  }
+
+  static async deleteJournal(userId, journalId) {
+    try {
+      const journalRef = db.collection('users').doc(userId).collection('journal').doc(journalId);
+      await journalRef.delete();
+      console.log('Journal entry deleted successfully.');
+    } catch (error) {
+      console.error('Error deleting journal entry', error);
+      throw error;
+    }
+  }
 };
 
 
