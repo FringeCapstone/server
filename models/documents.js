@@ -8,7 +8,13 @@ module.exports = class Documents {
         console.log('No documents found.');
         return [];
       }
-      return snapshot.docs.map(doc => ({id: doc.id, data: doc.data()}));
+      return snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data(),
+        content: doc.data().content,
+        author: doc.data().author,
+        header: doc.data().header
+      }));
     } catch (error) {
       console.error('Error getting documents', error);
       throw error;
@@ -25,7 +31,13 @@ module.exports = class Documents {
         return null;
       }
 
-      return {id: doc.id, data: doc.data()};
+      return {
+        id: doc.id,
+        data: doc.data(),
+        content: doc.data().content,
+        author: doc.data().author,
+        header: doc.data().header
+      };
     } catch (error) {
       console.error('Error getting document with ID:', id, error);
       throw error;
