@@ -42,11 +42,12 @@ module.exports = class Journals {
     }
   }
 
-  static async updateJournal(id, journalID, content) {
+  static async updateJournal(userId, journalID, content) {
     try {
       db.collection('users').doc(userId).collection('journals').doc(journalID)
           .update({
-            content: content
+            content: content,
+            updatedTime: new Date()
           })
           .then(() => {
             console.log('Journal successfully updated!');
